@@ -1,0 +1,65 @@
+-- EXERC. 1
+SELECT NOME, ANO
+FROM Filmes
+
+-- EXERC. 2
+SELECT NOME, ANO
+FROM Filmes
+ORDER BY ANO
+
+-- EXERC. 3
+SELECT NOME, ANO, DURACAO
+FROM Filmes
+WHERE NOME = 'De Volta para o Futuro'
+
+-- EXERC. 4
+SELECT *
+FROM Filmes
+WHERE ANO = 1997
+
+-- EXERC. 5
+SELECT *
+FROM Filmes
+WHERE ANO > 2000
+
+-- EXERC. 6
+SELECT *
+FROM Filmes
+WHERE DURACAO > 100
+AND DURACAO < 150
+ORDER BY DURACAO
+
+-- EXERC. 7
+SELECT ANO, COUNT(*) QUANTIDADE
+FROM Filmes
+GROUP BY ANO
+ORDER BY COUNT(*) DESC
+
+-- EXERC. 8
+SELECT PrimeiroNome , UltimoNome
+FROM Atores
+WHERE GENERO = 'M'
+
+-- EXERC. 9
+SELECT PrimeiroNome , UltimoNome
+FROM Atores
+WHERE GENERO = 'F'
+ORDER BY PrimeiroNome
+
+-- EXERC. 10
+SELECT Filmes.Nome, Generos.Genero
+FROM Filmes 
+INNER JOIN FilmesGenero ON FilmesGenero.IdFilme = Filmes.Id
+INNER JOIN Generos ON Generos.Id = FilmesGenero.IdGenero
+
+-- EXERC. 11
+SELECT Filmes.Nome, Generos.Genero
+FROM Filmes 
+INNER JOIN FilmesGenero ON FilmesGenero.IdFilme = Filmes.Id
+INNER JOIN Generos ON Generos.Id = FilmesGenero.IdGenero AND GeneroS.Genero = 'Mistério'
+
+-- EXERC. 12
+SELECT Filmes.Nome, Atores.PrimeiroNome, Atores.UltimoNome, ElencoFilme.Papel
+FROM Filmes 
+INNER JOIN ElencoFilme ON ElencoFilme.IdFilme = Filmes.Id
+INNER JOIN Atores ON Atores.Id = ElencoFilme.IdAtor
